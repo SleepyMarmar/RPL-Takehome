@@ -1,0 +1,41 @@
+#{extends 'main.html' /}
+#{set title:hotel.name /}
+
+<h1>Lihat lebih lanjut</h1>
+
+#{form @book(hotel.id)}
+    <p>
+        <strong>Perguruan Tinggi:</strong> ${hotel.name}
+    </p>
+    <p>
+        <strong>Lokasi:</strong> ${hotel.address}
+    </p>
+    <p>
+  
+    </p>
+    <p>
+        <strong>No. Telp:</strong> ${hotel.city}
+    </p>
+    <p>
+        <strong>Fakultas:</strong> ${hotel.state}
+    </p>
+    <p>
+        <strong>Lokasi Ujian:</strong> ${hotel.country}
+    </p>
+    <p>
+        <strong>Total Menerima Pendaftar Baru:</strong> ${hotel.price}
+    </p>
+    <p>
+        <strong>Jurusan yang dituju:</strong> 
+        #{select 'booking.beds', value:booking?.beds}
+            #{option 1}Elektro#{/option}
+            #{option 2}Sipil#{/option}
+            #{option 3}Industri#{/option}
+            #{option 3}Informatika#{/option}
+            #{option 3}Geologi#{/option}
+        #{/select}
+    </p>
+    <p class="buttons">
+        <input type="submit" value="Daftar!"> <a href="@{index()}">Kembali</a>      
+    </p>
+#{/form}

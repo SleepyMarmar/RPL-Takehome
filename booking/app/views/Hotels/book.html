@@ -1,0 +1,72 @@
+#{extends 'main.html' /}
+#{set title:'Book ' + hotel.name /}
+#{set 'moreScripts'}
+    <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/ui-lightness/jquery-ui-1.7.2.custom.css'}" />
+#{/set}
+
+<h1>Daftar !</h1>
+
+#{form @confirmBooking(hotel.id)}
+    <p>
+        <strong>Perguruan tinggi:</strong> ${hotel.name}
+    </p>
+    <p>
+        <strong>Lokasi:</strong> ${hotel.address}
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong>No. Telp:</strong> ${hotel.city}
+    </p>
+    <p>
+        <strong>Jurusan:</strong> ${hotel.city}
+    </p>
+    <p>
+        <strong>Lulus SMA/SMK di Tahun Ajaran:</strong> 
+        #{select 'booking.creditCardExpiryYear', value:booking?.creditCardExpiryYear}
+            #{option 2020}2020#{/option}
+            #{option 2021}2021#{/option}
+            #{option 2022}2022#{/option}
+            #{option 2023}2023#{/option}
+            #{option 2024}2024#{/option}
+        #{/select}
+        /
+        #{select 'booking.creditCardExpiryYear', value:booking?.creditCardExpiryYear}
+            #{option 2020}2020#{/option}
+            #{option 2021}2021#{/option}
+            #{option 2022}2022#{/option}
+            #{option 2023}2023#{/option}
+            #{option 2024}2024#{/option}
+
+        #{/select}      
+    </p>
+    <p>
+        <strong>Lokasi Ujian:</strong> ${hotel.country}
+    </p>
+    <p>
+        <strong>Total Menerima Pendaftar Baru:</strong> ${hotel.price}
+    </p>
+    #{field 'booking.checkinDate'}
+        <p class="${field.errorClass}">
+            <strong>Tanggal Pemeriksaan Kesehatan:</strong> <input type="text" size="10" name="${field.name}" class="datepicker" value="${booking?.checkinDate?.format('yyyy-MM-dd')}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'booking.checkoutDate'}
+        <p class="${field.errorClass}">
+            <strong>Tanggal Ujian Masuk:</strong> <input type="text" size="10" name="${field.name}" class="datepicker" value="${booking?.checkoutDate?.format('yyyy-MM-dd')}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+
+    
+#{/form}
+
+<script type="text/javascript" charset="${_response_encoding}">
+    $(function() {
+		$(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+	});
+</script>

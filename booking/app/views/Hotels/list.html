@@ -1,0 +1,35 @@
+#{if hotels}
+    <table>
+        <thead>
+            <tr>
+                <th>Perguruan Tinggi</th>
+                <th>Lokasi</th>
+                <th>Fakultas</th>
+                <th width="8%">No. Telp</th>
+                <th width="13%">Info lebih lanjut</th>
+            </tr>
+        </thead>
+        <tbody>
+            #{list hotels, as:'hotel'}
+                <tr>
+                    <td>${hotel.name}</td>
+                    <td>${hotel.address}</td>
+                    <td>${hotel.zip}</td>
+                    <td>${hotel.city}</td>
+                    <td>
+                        <a href="@{show(hotel.id)}">Lihat lebih lanjut</a>
+                    </td>
+                </tr>
+            #{/list}
+        </tbody>
+    </table>
+    <p>
+        <a id="nextPage" href="${page+1}">Hasil Lainnya</a>
+    </p>
+#{/if}
+
+#{else}
+    <p>
+        Tidak ada lagi
+    </p>
+#{/else}      
